@@ -1,0 +1,120 @@
+﻿@model IEnumerable<eindwerk.Entities.Toestel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Merk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Keuring)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ouderdom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Omschrijving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formaat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaximumGewicht)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeMatras)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeAandrijving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opplooibaar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verstelbaar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Materie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumAfschrijving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoortToestel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Locatie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Merk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Keuring)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ouderdom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Omschrijving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Formaat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaximumGewicht)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeMatras)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeAandrijving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opplooibaar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verstelbaar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Materie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumAfschrijving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoortToestel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locatie.LocatieId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ToestelId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ToestelId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ToestelId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
