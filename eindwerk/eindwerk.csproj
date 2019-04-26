@@ -6,6 +6,12 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Pages\Error.cshtml.cs" />
+    <Content Remove="Pages\Index.cshtml.cs" />
+    <Content Remove="Pages\Privacy.cshtml.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<eindwerk.Entities.Interventies>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Complexiteit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meldingsdatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Omschrijving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Einddatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verwachtteoplossingstermijn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OmschrijvingOplossing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoortInterventie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bestel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Personeels)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prioriteit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Toestel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complexiteit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Meldingsdatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Omschrijving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Einddatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verwachtteoplossingstermijn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OmschrijvingOplossing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoortInterventie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bestel.BestelId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personeels.PersoneelsId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prioriteit.PrioriteitId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toestel.ToestelId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.InterventieId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.InterventieId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.InterventieId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
