@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Bestelde onderdelen]
+       [dbo].[Locatie]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[Bestelde onderdelen] (Table)
+       [dbo].[Locatie] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Toestel_Locatie] (Foreign Key)
+     Create
+       [dbo].[FK_Toestel_Locatie] (Foreign Key)

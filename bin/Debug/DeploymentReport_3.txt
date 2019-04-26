@@ -1,0 +1,82 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Betrokkenheid]
+       [dbo].[Competentie]
+       [dbo].[Facturen]
+       [dbo].[Fotos]
+       [dbo].[Interventies]
+       [dbo].[Kennisgebieden]
+       [dbo].[Leverancier]
+       [dbo].[Niveau]
+       [dbo].[Prioriteit]
+       [dbo].[Tablet]
+       [dbo].[Toestel]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[Tablet].[Formaat] is being dropped, data loss could occur.
+       The column [dbo].[Tablet].[Gewicht] is being dropped, data loss could occur.
+       The column [dbo].[Tablet].[Kleur] is being dropped, data loss could occur.
+       The column [dbo].[Tablet].[OpslagCapaciteit] is being dropped, data loss could occur.
+       The column [dbo].[Tablet].[OpslageCapaciteit] is being dropped, data loss could occur.
+       The column [dbo].[Tablet].[ProcessorKernen] is being dropped, data loss could occur.
+       The column [dbo].[Tablet].[Processorsnelheid] is being dropped, data loss could occur.
+       The column [dbo].[Tablet].[Ramgeheugen] is being dropped, data loss could occur.
+
+** User actions
+     Table rebuild
+       [dbo].[Betrokkenheid] (Table)
+       [dbo].[Competentie] (Table)
+       [dbo].[Facturen] (Table)
+       [dbo].[Fotos] (Table)
+       [dbo].[Interventies] (Table)
+       [dbo].[Kennisgebieden] (Table)
+       [dbo].[Leverancier] (Table)
+       [dbo].[Niveau] (Table)
+       [dbo].[Prioriteit] (Table)
+       [dbo].[Tablet] (Table)
+       [dbo].[Toestel] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Competentie_Niveau] (Foreign Key)
+       [dbo].[FK_Bestellingen_Facturen] (Foreign Key)
+       [dbo].[FK_Fotos_Interventies] (Foreign Key)
+       [dbo].[FK_Bestellingen_Interventies] (Foreign Key)
+       [dbo].[FK_Interventie competenties_Interventies] (Foreign Key)
+       [dbo].[FK_Interventies_Prioriteit] (Foreign Key)
+       [dbo].[FK_Interventies_Toestel] (Foreign Key)
+       [dbo].[FK_Interventies_Bestellingen] (Foreign Key)
+       [dbo].[FK_Interventies_Personeelsleden] (Foreign Key)
+       [dbo].[FK_Interventie competenties_Kennisgebieden] (Foreign Key)
+       [dbo].[FK_Bestellingen_Leverancier] (Foreign Key)
+       [dbo].[FK_TabletPersoneelsLeden_Tablet] (Foreign Key)
+       [dbo].[FK_Onderdelen_Toestel] (Foreign Key)
+       [dbo].[FK_Toestel_Locatie] (Foreign Key)
+     Create
+       [dbo].[FK_Competentie_Niveau] (Foreign Key)
+       [dbo].[FK_Bestellingen_Facturen] (Foreign Key)
+       [dbo].[FK_Fotos_Interventies] (Foreign Key)
+       [dbo].[FK_Bestellingen_Interventies] (Foreign Key)
+       [dbo].[FK_Interventie competenties_Interventies] (Foreign Key)
+       [dbo].[FK_Interventies_Prioriteit] (Foreign Key)
+       [dbo].[FK_Interventies_Toestel] (Foreign Key)
+       [dbo].[FK_Interventies_Bestellingen] (Foreign Key)
+       [dbo].[FK_Interventies_Personeelsleden] (Foreign Key)
+       [dbo].[FK_Interventie competenties_Kennisgebieden] (Foreign Key)
+       [dbo].[FK_Bestellingen_Leverancier] (Foreign Key)
+       [dbo].[FK_TabletPersoneelsLeden_Tablet] (Foreign Key)
+       [dbo].[FK_Onderdelen_Toestel] (Foreign Key)
+       [dbo].[FK_Toestel_Locatie] (Foreign Key)
+
+The column [dbo].[Tablet].[Formaat] is being dropped, data loss could occur.
+The column [dbo].[Tablet].[Gewicht] is being dropped, data loss could occur.
+The column [dbo].[Tablet].[Kleur] is being dropped, data loss could occur.
+The column [dbo].[Tablet].[OpslagCapaciteit] is being dropped, data loss could occur.
+The column [dbo].[Tablet].[OpslageCapaciteit] is being dropped, data loss could occur.
+The column [dbo].[Tablet].[ProcessorKernen] is being dropped, data loss could occur.
+The column [dbo].[Tablet].[Processorsnelheid] is being dropped, data loss could occur.
+The column [dbo].[Tablet].[Ramgeheugen] is being dropped, data loss could occur.
+

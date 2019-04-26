@@ -1,0 +1,25 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Personeelsleden]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[Personeelsleden] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Bestellingen_Personeelsleden] (Foreign Key)
+       [dbo].[FK_Interventie competenties_Personeelsleden] (Foreign Key)
+       [dbo].[FK_Interventies_Personeelsleden] (Foreign Key)
+       [dbo].[FK_TabletPersoneelsLeden_Personeelsleden] (Foreign Key)
+     Create
+       [dbo].[FK_Bestellingen_Personeelsleden] (Foreign Key)
+       [dbo].[FK_Interventie competenties_Personeelsleden] (Foreign Key)
+       [dbo].[FK_Interventies_Personeelsleden] (Foreign Key)
+       [dbo].[FK_TabletPersoneelsLeden_Personeelsleden] (Foreign Key)

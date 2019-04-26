@@ -1,0 +1,6 @@
+E:\Eindwerk\EindWerk\DatabaseEindWerk\DatabaseEindWerk\bin\Debug\DatabaseEindWerk.dacpac
+E:\Eindwerk\EindWerk\DatabaseEindWerk\DatabaseEindWerk\obj\Debug\DatabaseEindWerk.sqlprojAssemblyReference.cache
+E:\Eindwerk\EindWerk\DatabaseEindWerk\DatabaseEindWerk\obj\Debug\DatabaseEindWerk.dll
+E:\Eindwerk\EindWerk\DatabaseEindWerk\DatabaseEindWerk\obj\Debug\DatabaseEindWerk.pdb
+E:\Eindwerk\EindWerk\DatabaseEindWerk\DatabaseEindWerk\bin\Debug\DatabaseEindWerk.dll
+E:\Eindwerk\EindWerk\DatabaseEindWerk\DatabaseEindWerk\bin\Debug\DatabaseEindWerk.pdb

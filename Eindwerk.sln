@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eindwerk", "eindwerk\eindwerk.csproj", "{FDAE7909-8138-47EF-A9E8-63C552E28090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eindwerk", "eindwerk\eindwerk.csproj", "{FDAE7909-8138-47EF-A9E8-63C552E28090}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DatabaseEindWerk", "E:\Eindwerk\EindWerk\EindWerk\DatabaseEindWerk\DatabaseEindWerk\DatabaseEindWerk.sqlproj", "{3C745AEE-FBF3-4C9D-BDBC-8CC7F0D069AF}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DatabaseEindWerk", "DatabaseEindWerk.sqlproj", "{3C745AEE-FBF3-4C9D-BDBC-8CC7F0D069AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
