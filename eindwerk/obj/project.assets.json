@@ -13012,11 +13012,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Eindwerk\\Eindwerk\\eindwerk\\eindwerk.csproj",
+      "projectUniqueName": "E:\\Eindwerk\\Eindwerk\\Eindwerk\\eindwerk\\eindwerk.csproj",
       "projectName": "eindwerk",
-      "projectPath": "E:\\Eindwerk\\Eindwerk\\eindwerk\\eindwerk.csproj",
+      "projectPath": "E:\\Eindwerk\\Eindwerk\\Eindwerk\\eindwerk\\eindwerk.csproj",
       "packagesPath": "C:\\Users\\Richard\\.nuget\\packages\\",
-      "outputPath": "E:\\Eindwerk\\Eindwerk\\eindwerk\\obj\\",
+      "outputPath": "E:\\Eindwerk\\Eindwerk\\Eindwerk\\eindwerk\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"
