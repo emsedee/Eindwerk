@@ -1,6 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 <section id="container" class="">
 
 
@@ -127,7 +127,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="./img/avatar-mini.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="/img/avatar-mini.jpg"></span>
                                 <span class="subject">
                                     <span class="from">Greg  Martin</span>
                                     <span class="time">1 min</span>
@@ -139,7 +139,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="./img/avatar-mini2.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="/img/avatar-mini2.jpg"></span>
                                 <span class="subject">
                                     <span class="from">Bob   Mckenzie</span>
                                     <span class="time">5 mins</span>
@@ -151,7 +151,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="./img/avatar-mini3.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="/img/avatar-mini3.jpg"></span>
                                 <span class="subject">
                                     <span class="from">Phillip   Park</span>
                                     <span class="time">2 hrs</span>
@@ -163,7 +163,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="./img/avatar-mini4.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="/img/avatar-mini4.jpg"></span>
                                 <span class="subject">
                                     <span class="from">Ray   Munoz</span>
                                     <span class="time">1 day</span>
@@ -226,44 +226,30 @@
                 </li>
                 <!-- alert notification end-->
                 <!-- user login dropdown start-->
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="profile-ava">
-                            <img alt="" src="img/avatar1_small.jpg">
-                        </span>
-                        <span class="username">@User.Identity.Name</span>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu extended logout">
-                        <div class="log-arrow-up"></div>
-                        <li class="eborder-top">
-                            <a href="#"><i class="icon_profile"></i> My Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-                        </li>
-                        <li>
-                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                <a type="submit" role="button"><i class="icon_key_alt"></i> Logout</a>
-                            </form>
-                           
-                        </li>
-                        <li>
-                            <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                        </li>
-                        <li>
-                            <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                        </li>
-                    </ul>
+              
+                  
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                <li class="nav-item">
+                    <a class="nav-link user-name" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @User.Identity.Name!</a>
+                 
                 </li>
-                <!-- user login dropdown end -->
-            </ul>
+                    <li class="nav-item">
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit" class="nav-link btn btn-link user-name">Logout</button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+
+                    <li class="nav-item">
+                        <a class="nav-link user-name" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </li>
+                }
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
             <!-- notificatoin dropdown end-->
         </div>
     </header>

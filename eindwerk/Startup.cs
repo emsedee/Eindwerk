@@ -35,7 +35,7 @@ namespace eindwerk
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-services.AddDbContext<DatabaseEindWerkContext>(options => options.UseSqlServer("Data Source=DESKTOP-0FFQO7L\\SQLEXPRESS;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;Initial Catalog=DatabaseEindWerk"
+services.AddDbContext<DatabaseEindWerkContext>(options => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DatabaseEindwerk;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
                 ));
                 services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
