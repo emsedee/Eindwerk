@@ -231,7 +231,7 @@
                     @if (SignInManager.IsSignedIn(User))
                     {
                 <li class="nav-item">
-                    <a class="nav-link user-name" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @User.Identity.Name!</a>
+                    <a class="nav-link username" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @User.Identity.Name!</a>
                  
                 </li>
                     <li class="nav-item">
@@ -244,10 +244,10 @@
                 {
 
                     <li class="nav-item">
-                        <a class="nav-link user-name" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        <a class="nav-link username" asp-area="Identity" asp-page="/Account/Login">Login</a>
                     </li>
                 }
-                    </li>
+                    
                     <!-- user login dropdown end -->
                 </ul>
             <!-- notificatoin dropdown end-->
