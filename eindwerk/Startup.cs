@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -44,7 +43,16 @@ namespace eindwerk
                 // services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings  
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequiredUniqueChars = 1;
+            });
 
             services.AddMvc(config =>
             {
@@ -69,32 +77,51 @@ namespace eindwerk
             options.LogoutPath = $"/Identity/Account/Logout";
             options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
         });
-           
+
 
         }
         private async Task CreateUserRoles(IServiceProvider serviceProvider)
         {
-            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            RoleManager<IdentityRole> RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            UserManager<IdentityUser> UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
             IdentityResult roleResult;
             //Adding Admin Role
+
             var roleCheck = await RoleManager.RoleExistsAsync("Admin");
             if (!roleCheck)
             {
                 //create the roles and seed them to the database
                 roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
             }
+            roleCheck = await RoleManager.RoleExistsAsync("Manager");
+            if (!roleCheck)
+            {
+                //create the roles and seed them to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Manager"));
+            }
+            roleCheck = await RoleManager.RoleExistsAsync("Technieker");
+            if (!roleCheck)
+            {
+                //create the roles and seed them to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Technieker"));
+            }
+            roleCheck = await RoleManager.RoleExistsAsync("User");
+            if (!roleCheck)
+            {
+                //create the roles and seed them to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("User"));
+            }
             //Assign Admin role to the main User here we have given our newly registered 
             //login id for Admin management
             IdentityUser user = await UserManager.FindByEmailAsync("richardsy18@hotmail.com");
-            var User = new IdentityUser();
+            IdentityUser User = new IdentityUser();
             await UserManager.AddToRoleAsync(user, "Admin");
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,IServiceProvider services)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider services)
         {
-          
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -119,7 +146,7 @@ namespace eindwerk
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-              CreateUserRoles(services).Wait();
+            CreateUserRoles(services).Wait();
         }
     }
 }
