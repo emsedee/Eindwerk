@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190608122940_test.cs" />
+    <Compile Remove="Migrations\20190608122940_test.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Pages\Error.cshtml.cs" />
     <Content Remove="Pages\Index.cshtml.cs" />
     <Content Remove="Pages\Privacy.cshtml.cs" />

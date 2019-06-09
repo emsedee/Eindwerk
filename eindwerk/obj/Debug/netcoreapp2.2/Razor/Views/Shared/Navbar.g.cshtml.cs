@@ -23,13 +23,18 @@ using eindwerk.Models;
 
 #line default
 #line hidden
+#line 3 "E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
 #line 1 "E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\Views\Shared\Navbar.cshtml"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"160d30f15eab068bade308b6612f078a0a60f776", @"/Views/Shared/Navbar.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3871df00a48f214334ed5c7506f687e1dea1fc11", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7b0b6622c4097f5c03432eed49ff525bd06bcc39", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Navbar : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("navbar-form"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -84,7 +89,7 @@ using Microsoft.AspNetCore.Identity;
                     ");
             EndContext();
             BeginContext(715, 142, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "160d30f15eab068bade308b6612f078a0a60f7766810", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "160d30f15eab068bade308b6612f078a0a60f7766960", async() => {
                 BeginContext(741, 109, true);
                 WriteLiteral("\r\n                        <input class=\"form-control\" placeholder=\"Search\" type=\"text\">\r\n                    ");
                 EndContext();
@@ -335,7 +340,7 @@ using Microsoft.AspNetCore.Identity;
             WriteLiteral("                <li class=\"nav-item\">\r\n                    ");
             EndContext();
             BeginContext(12073, 122, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "160d30f15eab068bade308b6612f078a0a60f77620499", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "160d30f15eab068bade308b6612f078a0a60f77620649", async() => {
                 BeginContext(12170, 1, true);
                 WriteLiteral(" ");
                 EndContext();
@@ -371,7 +376,7 @@ using Microsoft.AspNetCore.Identity;
             WriteLiteral("\r\n                 \r\n                </li>\r\n                    <li class=\"nav-item\">\r\n                        ");
             EndContext();
             BeginContext(12306, 283, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "160d30f15eab068bade308b6612f078a0a60f77622799", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "160d30f15eab068bade308b6612f078a0a60f77622949", async() => {
                 BeginContext(12449, 133, true);
                 WriteLiteral("\r\n                            <button type=\"submit\" class=\"nav-link btn btn-link user-name\">Logout</button>\r\n                        ");
                 EndContext();
@@ -422,7 +427,7 @@ using Microsoft.AspNetCore.Identity;
             WriteLiteral("                    <li class=\"nav-item\">\r\n                        ");
             EndContext();
             BeginContext(12747, 84, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "160d30f15eab068bade308b6612f078a0a60f77626313", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "160d30f15eab068bade308b6612f078a0a60f77626463", async() => {
                 BeginContext(12822, 5, true);
                 WriteLiteral("Login");
                 EndContext();
@@ -460,6 +465,8 @@ using Microsoft.AspNetCore.Identity;
         public UserManager<IdentityUser> UserManager { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public SignInManager<IdentityUser> SignInManager { get; private set; }
+        [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
+        public IAuthorizationService AuthorizationService { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]

@@ -4,7 +4,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseName>DatabaseEindWerk</TargetDatabaseName>
     <DeployScriptFileName>DatabaseEindWerk.sql</DeployScriptFileName>
-    <TargetConnectionString>Data Source=DESKTOP-0FFQO7L\SQLEXPRESS;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
+    <TargetConnectionString>Data Source=DESKTOP-0FFQO7L\SQLEXPRESS;Initial Catalog=DatabaseEindWerk;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
 </Project>

@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using eindwerk.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using eindwerk.Data;
 using eindwerk.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Threading.Tasks;
 
 namespace eindwerk
 {
@@ -37,31 +35,66 @@ namespace eindwerk
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-services.AddDbContext<DatabaseEindWerkContext>(options => options.UseSqlServer("Data Source=DESKTOP-0FFQO7L\\SQLEXPRESS;Initial Catalog=DatabaseEindWerk;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
-                ));
-                services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>()
+            services.AddDbContext<DatabaseEindWerkContext>(options => options.UseSqlServer("Data Source=DESKTOP-0FFQO7L\\SQLEXPRESS;Initial Catalog=DatabaseEindWerk;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+                            ));
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(
+                Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                // services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
             services.AddMvc(config =>
             {
+
                 // using Microsoft.AspNetCore.Mvc.Authorization;
                 // using Microsoft.AspNetCore.Authorization;
-                var policy = new AuthorizationPolicyBuilder()
+                AuthorizationPolicy policy = new AuthorizationPolicyBuilder()
                                  .RequireAuthenticatedUser()
                                  .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             })
-      .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-        }
+      .SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddRazorPagesOptions(options =>
+      {
+          options.AllowAreas = true;
+          options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+          options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+      });
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+            services.ConfigureApplicationCookie(options =>
         {
+            options.LoginPath = $"/Identity/Account/Login";
+            options.LogoutPath = $"/Identity/Account/Logout";
+            options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+        });
+           
+
+        }
+        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        {
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            IdentityResult roleResult;
+            //Adding Admin Role
+            var roleCheck = await RoleManager.RoleExistsAsync("Admin");
+            if (!roleCheck)
+            {
+                //create the roles and seed them to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+            //Assign Admin role to the main User here we have given our newly registered 
+            //login id for Admin management
+            IdentityUser user = await UserManager.FindByEmailAsync("richardsy18@hotmail.com");
+            var User = new IdentityUser();
+            await UserManager.AddToRoleAsync(user, "Admin");
+        }
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,IServiceProvider services)
+        {
+          
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -86,6 +119,7 @@ services.AddDbContext<DatabaseEindWerkContext>(options => options.UseSqlServer("
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+              CreateUserRoles(services).Wait();
         }
     }
 }

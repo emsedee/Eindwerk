@@ -1,10 +1,12 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace eindwerk.Entities
 {
-    public class DatabaseEindWerkContext : DbContext
+    public class DatabaseEindWerkContext : IdentityDbContext<IdentityUser>
     {
         public DatabaseEindWerkContext()
         {
@@ -47,6 +49,8 @@ namespace eindwerk.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
             modelBuilder.Entity<BesteldeOnderdelen>(entity =>
