@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using eindwerk.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eindwerk.Controllers
 {
@@ -52,7 +53,7 @@ namespace eindwerk.Controllers
         {
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId");
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName");
-            ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "PrioriteitId");
+            ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit");
             ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "ToestelId");
             return View();
         }
@@ -66,6 +67,7 @@ namespace eindwerk.Controllers
         {
             if (ModelState.IsValid)
             {
+                interventies.PersoneelsId = 1;
                 interventies.Meldingsdatum = DateTime.Now;
                 _context.Add(interventies);
                 await _context.SaveChangesAsync();
@@ -73,11 +75,11 @@ namespace eindwerk.Controllers
             }
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
-            ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "PrioriteitId", interventies.PrioriteitId);
+            ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
             ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "ToestelId", interventies.ToestelId);
             return View(interventies);
         }
-
+        [Authorize(Roles = "Manager, Admin, Technieker")]
         // GET: Interventies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -93,11 +95,11 @@ namespace eindwerk.Controllers
             }
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
-            ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "PrioriteitId", interventies.PrioriteitId);
+            ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
             ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "ToestelId", interventies.ToestelId);
             return View(interventies);
         }
-
+        [Authorize(Roles = "Manager, Admin, Technieker")]
         // POST: Interventies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -132,11 +134,11 @@ namespace eindwerk.Controllers
             }
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
-            ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "PrioriteitId", interventies.PrioriteitId);
+            ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
             ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "ToestelId", interventies.ToestelId);
             return View(interventies);
         }
-
+        [Authorize(Roles = "Manager, Admin")]
         // GET: Interventies/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -158,7 +160,7 @@ namespace eindwerk.Controllers
 
             return View(interventies);
         }
-
+        [Authorize(Roles = "Manager, Admin")]
         // POST: Interventies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

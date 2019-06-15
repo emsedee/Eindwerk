@@ -296,3 +296,8 @@ F:\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\eindwerk.Views.pdb
 F:\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\eindwerk.dll
 F:\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\eindwerk.pdb
 F:\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\eindwerk.csproj.CopyComplete
+E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\Razor\Views\Prioriteits\Create.g.cshtml.cs
+E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\Razor\Views\Prioriteits\Delete.g.cshtml.cs
+E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\Razor\Views\Prioriteits\Details.g.cshtml.cs
+E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\Razor\Views\Prioriteits\Edit.g.cshtml.cs
+E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\Razor\Views\Prioriteits\Index.g.cshtml.cs

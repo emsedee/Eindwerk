@@ -11,10 +11,8 @@ namespace eindwerk.Entities
         }
 
         public int PrioriteitId { get; set; }
-        public string Gewoon { get; set; }
-        public string Dringend { get; set; }
-        public string ZeerDringen { get; set; }
-        public string HoogDringend { get; set; }
+        public string _Prioriteit { get; set; }
+        
 
         public virtual ICollection<Interventies> Interventies { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿@model eindwerk.Entities.Interventies
 
+
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,62 +14,31 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Complexiteit" class="control-label"></label>
-                <input asp-for="Complexiteit" class="form-control" />
-                <span asp-validation-for="Complexiteit" class="text-danger"></span>
-            </div>
-           
+     
             <div class="form-group">
                 <label asp-for="Omschrijving" class="control-label"></label>
                 <input asp-for="Omschrijving" class="form-control" />
                 <span asp-validation-for="Omschrijving" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Einddatum" class="control-label"></label>
-                <input asp-for="Einddatum" class="form-control" />
-                <span asp-validation-for="Einddatum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duur" class="control-label"></label>
-                <input asp-for="Duur" class="form-control" />
-                <span asp-validation-for="Duur" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Verwachtteoplossingstermijn" class="control-label"></label>
-                <input asp-for="Verwachtteoplossingstermijn" class="form-control" />
-                <span asp-validation-for="Verwachtteoplossingstermijn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OmschrijvingOplossing" class="control-label"></label>
-                <input asp-for="OmschrijvingOplossing" class="form-control" />
-                <span asp-validation-for="OmschrijvingOplossing" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PersoneelsId" class="control-label"></label>
-                <select asp-for="PersoneelsId" class ="form-control" asp-items="ViewBag.PersoneelsId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="PrioriteitId" class="control-label"></label>
-                <select asp-for="PrioriteitId" class ="form-control" asp-items="ViewBag.PrioriteitId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ToestelId" class="control-label"></label>
-                <select asp-for="ToestelId" class ="form-control" asp-items="ViewBag.ToestelId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="BestelId" class="control-label"></label>
-                <select asp-for="BestelId" class ="form-control" asp-items="ViewBag.BestelId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        
+         
+                
+
+
+                <div class="form-group">
+                    <label asp-for="PrioriteitId" class="control-label"></label>
+                    <select asp-for="PrioriteitId" class="form-control" asp-items="ViewBag.PrioriteitId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ToestelId" class="control-label"></label>
+                    <select asp-for="ToestelId" class="form-control" asp-items="ViewBag.ToestelId"></select>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+</form>
     </div>
 </div>
 

@@ -390,7 +390,7 @@ namespace eindwerk.Migrations
                     b.Property<int?>("PrioriteitId")
                         .HasColumnName("Prioriteit_id");
 
-                    b.Property<string>("Status")
+                    b.Property<int>("Status")
                         .HasColumnName("Soort interventie")
                         .HasMaxLength(50);
 
@@ -617,18 +617,7 @@ namespace eindwerk.Migrations
                         .HasColumnName("Prioriteit_id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Dringend")
-                        .HasMaxLength(10);
-
-                    b.Property<string>("Gewoon")
-                        .HasMaxLength(10);
-
-                    b.Property<string>("HoogDringend")
-                        .HasColumnName("Hoog Dringend")
-                        .HasMaxLength(10);
-
-                    b.Property<string>("ZeerDringen")
-                        .HasColumnName("Zeer Dringen")
+                    b.Property<string>("_Prioriteit")
                         .HasMaxLength(10);
 
                     b.HasKey("PrioriteitId");

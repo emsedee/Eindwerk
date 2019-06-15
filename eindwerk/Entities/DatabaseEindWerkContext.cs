@@ -433,17 +433,8 @@ namespace eindwerk.Entities
             {
                 entity.Property(e => e.PrioriteitId).HasColumnName("Prioriteit_id");
 
-                entity.Property(e => e.Dringend).HasMaxLength(10);
+                entity.Property(e => e._Prioriteit).HasMaxLength(10);
 
-                entity.Property(e => e.Gewoon).HasMaxLength(10);
-
-                entity.Property(e => e.HoogDringend)
-                    .HasColumnName("Hoog Dringend")
-                    .HasMaxLength(10);
-
-                entity.Property(e => e.ZeerDringen)
-                    .HasColumnName("Zeer Dringen")
-                    .HasMaxLength(10);
             });
 
             modelBuilder.Entity<Tablet>(entity =>
