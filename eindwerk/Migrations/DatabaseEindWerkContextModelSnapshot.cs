@@ -491,14 +491,16 @@ namespace eindwerk.Migrations
                         .HasColumnName("Locatie_id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Oppervlakte")
+                    b.Property<string>("Naam");
+
+                    b.Property<int>("Oppervlakte")
                         .HasMaxLength(10);
 
                     b.Property<string>("SoortRuimte")
                         .HasColumnName("Soort Ruimte")
                         .HasMaxLength(10);
 
-                    b.Property<string>("VoorraadPlaatsen")
+                    b.Property<int>("VoorraadPlaatsen")
                         .HasMaxLength(10);
 
                     b.HasKey("LocatieId");

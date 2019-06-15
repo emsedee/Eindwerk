@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace eindwerk.Entities
 {
@@ -11,10 +12,10 @@ namespace eindwerk.Entities
         }
 
         public int LocatieId { get; set; }
-        public string VoorraadPlaatsen { get; set; }
-        public string Oppervlakte { get; set; }
+        public int VoorraadPlaatsen { get; set; }
+        public int Oppervlakte { get; set; }
         public string SoortRuimte { get; set; }
-
+        public string Naam { get; set; }
         public virtual ICollection<Toestel> Toestel { get; set; }
     }
 }

@@ -47,7 +47,7 @@ namespace eindwerk.Controllers
         // GET: Toestel/Create
         public IActionResult Create()
         {
-            ViewData["LocatieId"] = new SelectList(_context.Locatie, "LocatieId", "LocatieId");
+            ViewData["LocatieId"] = new SelectList(_context.Locatie, "LocatieId", "Naam");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace eindwerk.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LocatieId"] = new SelectList(_context.Locatie, "LocatieId", "LocatieId", toestel.LocatieId);
+            ViewData["LocatieId"] = new SelectList(_context.Locatie, "LocatieId", "Naam", toestel.LocatieId);
             return View(toestel);
         }
 
@@ -81,7 +81,7 @@ namespace eindwerk.Controllers
             {
                 return NotFound();
             }
-            ViewData["LocatieId"] = new SelectList(_context.Locatie, "LocatieId", "LocatieId", toestel.LocatieId);
+            ViewData["LocatieId"] = new SelectList(_context.Locatie, "LocatieId", "Naam", toestel.LocatieId);
             return View(toestel);
         }
 
@@ -117,7 +117,7 @@ namespace eindwerk.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LocatieId"] = new SelectList(_context.Locatie, "LocatieId", "LocatieId", toestel.LocatieId);
+            ViewData["LocatieId"] = new SelectList(_context.Locatie, "LocatieId", "Naam", toestel.LocatieId);
             return View(toestel);
         }
 

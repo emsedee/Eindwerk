@@ -1,0 +1,54 @@
+﻿@model IEnumerable<eindwerk.Entities.Locatie>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VoorraadPlaatsen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oppervlakte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoortRuimte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naam)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoorraadPlaatsen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Oppervlakte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoortRuimte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LocatieId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LocatieId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LocatieId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

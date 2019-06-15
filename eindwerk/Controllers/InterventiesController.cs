@@ -22,7 +22,7 @@ namespace eindwerk.Controllers
         // GET: Interventies
         public async Task<IActionResult> Index()
         {
-            var databaseEindWerkContext = _context.Interventies.Include(i => i.Bestel).Include(i => i.Personeels).Include(i => i.Prioriteit).Include(i => i.Toestel);
+            var databaseEindWerkContext = _context.Interventies.Include(i => i.Bestel).Include(i => i.Personeels).Include(i => i.Prioriteit).Include(i => i.Toestel).Include(i => i.Toestel.Locatie);
             return View(await databaseEindWerkContext.ToListAsync());
         }
 
@@ -54,7 +54,8 @@ namespace eindwerk.Controllers
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId");
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName");
             ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit");
-            ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "ToestelId");
+            ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "Naam");
+
             return View();
         }
 
@@ -77,7 +78,7 @@ namespace eindwerk.Controllers
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
             ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
-            ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "ToestelId", interventies.ToestelId);
+            ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "Naam", interventies.ToestelId);
             return View(interventies);
         }
         [Authorize(Roles = "Manager, Admin, Technieker")]
@@ -90,14 +91,11 @@ namespace eindwerk.Controllers
             }
 
             var interventies = await _context.Interventies.FindAsync(id);
-            if (interventies == null)
-            {
-                return NotFound();
-            }
+          
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
             ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
-            ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "ToestelId", interventies.ToestelId);
+            ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "Naam", interventies.ToestelId);
             return View(interventies);
         }
         [Authorize(Roles = "Manager, Admin, Technieker")]
@@ -118,6 +116,14 @@ namespace eindwerk.Controllers
                 try
                 {
                     _context.Update(interventies);
+                  
+                    if (interventies.PersoneelsId !=1 && interventies.Status != Status.Opgelost )
+                    {
+                       
+                            interventies.Status = Status.Toegewezen;
+                        
+                        
+                    }
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -136,7 +142,7 @@ namespace eindwerk.Controllers
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
             ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
-            ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "ToestelId", interventies.ToestelId);
+            ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "Naam", interventies.ToestelId);
             return View(interventies);
         }
         [Authorize(Roles = "Manager, Admin")]

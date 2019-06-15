@@ -1,0 +1,47 @@
+﻿@model eindwerk.Entities.Locatie
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Locatie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LocatieId" />
+            <div class="form-group">
+                <label asp-for="VoorraadPlaatsen" class="control-label"></label>
+                <input asp-for="VoorraadPlaatsen" class="form-control" />
+                <span asp-validation-for="VoorraadPlaatsen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Oppervlakte" class="control-label"></label>
+                <input asp-for="Oppervlakte" class="form-control" />
+                <span asp-validation-for="Oppervlakte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoortRuimte" class="control-label"></label>
+                <input asp-for="SoortRuimte" class="form-control" />
+                <span asp-validation-for="SoortRuimte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Naam" class="control-label"></label>
+                <input asp-for="Naam" class="form-control" />
+                <span asp-validation-for="Naam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
