@@ -66,12 +66,14 @@ namespace eindwerk.Controllers
         {
             if (ModelState.IsValid)
             {
+                interventies.Meldingsdatum = DateTime.Now;
+                interventies.Personeels.Naam = interventies.Personeels.Naam;
                 _context.Add(interventies);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
-            ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "PersoneelsId", interventies.PersoneelsId);
+            ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "PersoneelsId", interventies.Personeels.Naam);
             ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "PrioriteitId", interventies.PrioriteitId);
             ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "ToestelId", interventies.ToestelId);
             return View(interventies);
