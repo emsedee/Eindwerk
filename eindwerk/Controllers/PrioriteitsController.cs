@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using eindwerk.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eindwerk.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PrioriteitsController : Controller
     {
         private readonly DatabaseEindWerkContext _context;

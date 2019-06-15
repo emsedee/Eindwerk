@@ -68,6 +68,7 @@ namespace eindwerk.Controllers
             if (ModelState.IsValid)
             {
                 interventies.PersoneelsId = 1;
+                interventies.Status = 0  ;
                 interventies.Meldingsdatum = DateTime.Now;
                 _context.Add(interventies);
                 await _context.SaveChangesAsync();
