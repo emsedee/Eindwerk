@@ -390,7 +390,7 @@ namespace eindwerk.Migrations
                     b.Property<int?>("PrioriteitId")
                         .HasColumnName("Prioriteit_id");
 
-                    b.Property<string>("SoortInterventie")
+                    b.Property<string>("Status")
                         .HasColumnName("Soort interventie")
                         .HasMaxLength(50);
 

@@ -24,7 +24,7 @@ namespace eindwerk.Entities
         public int? PrioriteitId { get; set; }
         public int? ToestelId { get; set; }
         public int? BestelId { get; set; }
-        public string SoortInterventie { get; set; }
+        public string Status { get; set; }
 
         public virtual Bestellingen Bestel { get; set; }
         public virtual Personeelsleden Personeels { get; set; }

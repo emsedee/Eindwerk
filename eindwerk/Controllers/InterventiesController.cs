@@ -62,7 +62,7 @@ namespace eindwerk.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("InterventieId,Complexiteit,Meldingsdatum,Omschrijving,Einddatum,Duur,Verwachtteoplossingstermijn,OmschrijvingOplossing,PersoneelsId,PrioriteitId,ToestelId,BestelId,SoortInterventie")] Interventies interventies)
+        public async Task<IActionResult> Create([Bind("InterventieId,Complexiteit,Meldingsdatum,Omschrijving,Einddatum,Duur,Verwachtteoplossingstermijn,OmschrijvingOplossing,PersoneelsId,PrioriteitId,ToestelId,BestelId,Status")] Interventies interventies)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +103,7 @@ namespace eindwerk.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("InterventieId,Complexiteit,Meldingsdatum,Omschrijving,Einddatum,Duur,Verwachtteoplossingstermijn,OmschrijvingOplossing,PersoneelsId,PrioriteitId,ToestelId,BestelId,SoortInterventie")] Interventies interventies)
+        public async Task<IActionResult> Edit(int id, [Bind("InterventieId,Complexiteit,Meldingsdatum,Omschrijving,Einddatum,Duur,Verwachtteoplossingstermijn,OmschrijvingOplossing,PersoneelsId,PrioriteitId,ToestelId,BestelId,Status")] Interventies interventies)
         {
             if (id != interventies.InterventieId)
             {

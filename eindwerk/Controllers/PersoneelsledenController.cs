@@ -13,7 +13,13 @@ namespace eindwerk.Controllers
     [Authorize(Roles = "Admin")]
     public class PersoneelsledenController : Controller
     {
-        private readonly DatabaseEindWerkContext _context;
+        private readonly DatabaseEindWerkContext
+            
+            
+            
+            
+            
+            _context;
 
         public PersoneelsledenController(DatabaseEindWerkContext context)
         {

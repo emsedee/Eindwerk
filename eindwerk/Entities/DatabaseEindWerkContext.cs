@@ -43,7 +43,7 @@ namespace eindwerk.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-0FFQO7L\\SQLEXPRESS;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;Initial Catalog=DatabaseEindWerk");
+                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-0FFQO7L\SQLEXPRESS;Initial Catalog=DatabaseEindWerk;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
@@ -251,7 +251,7 @@ namespace eindwerk.Entities
 
                 entity.Property(e => e.PrioriteitId).HasColumnName("Prioriteit_id");
 
-                entity.Property(e => e.SoortInterventie)
+                entity.Property(e => e.Status)
                     .HasColumnName("Soort interventie")
                     .HasMaxLength(50);
 
