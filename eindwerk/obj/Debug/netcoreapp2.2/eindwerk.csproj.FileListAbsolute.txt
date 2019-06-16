@@ -306,3 +306,4 @@ E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\Razor\Views\Locat
 E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\Razor\Views\Locaties\Details.g.cshtml.cs
 E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\Razor\Views\Locaties\Edit.g.cshtml.cs
 E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\Razor\Views\Locaties\Index.g.cshtml.cs
+E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\obj\Debug\netcoreapp2.2\Razor\Views\Personeelsleden\Techniekers.g.cshtml.cs

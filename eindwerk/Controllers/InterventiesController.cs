@@ -96,7 +96,7 @@ namespace eindwerk.Controllers
             var interventies = await _context.Interventies.FindAsync(id);
           
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
-            ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
+            ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden.Where(b => b.SoortPersoneelslid.Contains("Technieker")), "PersoneelsId", "FullName", interventies.PersoneelsId);
             ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
             ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "Naam", interventies.ToestelId);
             return View(interventies);

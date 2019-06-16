@@ -31,7 +31,12 @@ namespace eindwerk.Controllers
         {
             return View(await _context.Personeelsleden.ToListAsync());
         }
+        public ActionResult Techniekers()
+        {
+            var TechniekersLijst = _context.Personeelsleden.Where(b => b.SoortPersoneelslid.Contains("Technieker"));
 
+            return View(TechniekersLijst);
+        }
         // GET: Personeelsleden/Details/5
         public async Task<IActionResult> Details(int? id)
         {
