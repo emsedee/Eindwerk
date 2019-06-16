@@ -57,6 +57,7 @@ namespace eindwerk.Controllers
             ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "Naam");
             ViewData["LocatieId"] = new SelectList(_context.Locatie, "LocatieId", "Naam");
 
+
             return View();
         }
 
@@ -75,6 +76,7 @@ namespace eindwerk.Controllers
                 _context.Add(interventies);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+
             }
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
@@ -117,18 +119,45 @@ namespace eindwerk.Controllers
                 try
                 {
                     _context.Update(interventies);
-                    if (interventies.Status == Status.Opgelost)
-                    {
-                        interventies.Einddatum = DateTime.Now;
-                      
+                    if (interventies.Status == Status.Opgelost )
+                        if (interventies.OmschrijvingOplossing != null)
+                        {
+                            interventies.Einddatum = DateTime.Now;
+
+                        }
+                        else
+                        {
                          
-                    }
+                            ModelState.AddModelError("OmschrijvingOplossing", "Gelieve een oplossing in te vullen");
+                            ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
+                            ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
+                            ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
+                            ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "Naam", interventies.ToestelId);
+                            return View(interventies);
+                          
+                           
+                        }
+
+                      
                     if (interventies.PersoneelsId !=1 && interventies.Status != Status.Opgelost )
                     {
                        
                             interventies.Status = Status.Toegewezen;
                         
                         
+                    }
+
+                    if (interventies.PersoneelsId == 1 && interventies.Status == Status.Toegewezen)
+                    {
+
+                        ModelState.AddModelError("PersoneelsId", "Gelieve de melding toe te wijzen");
+                        ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
+                        ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
+                        ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
+                        ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "Naam", interventies.ToestelId);
+                        return View(interventies);
+
+
                     }
                     await _context.SaveChangesAsync();
                 }
