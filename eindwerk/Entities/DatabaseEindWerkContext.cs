@@ -412,7 +412,7 @@ namespace eindwerk.Entities
 
                 entity.Property(e => e.Foto).HasColumnType("image");
 
-                entity.Property(e => e.GsmNummer).HasColumnName("Gsm Nummer");
+                entity.Property(e => e.PhoneNumber).HasColumnName("Gsm Nummer");
 
                 entity.Property(e => e.Naam)
                     .HasMaxLength(50)

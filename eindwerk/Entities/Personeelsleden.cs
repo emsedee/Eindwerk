@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace eindwerk.Entities
 {
-    public partial class Personeelsleden
+    public partial class Personeelsleden : IdentityUser<int>
     {
         public Personeelsleden()
         {
@@ -17,8 +18,6 @@ namespace eindwerk.Entities
         public int PersoneelsId { get; set; }
         public string Naam { get; set; }
         public string Voornaam { get; set; }
-        public string GsmNummer { get; set; }
-        public string Emailadres { get; set; }
         public byte[] Foto { get; set; }
         public string SoortPersoneelslid { get; set; }
         [Display(Name = "Full Name")]

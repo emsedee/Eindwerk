@@ -582,21 +582,47 @@ namespace eindwerk.Migrations
                         .HasColumnName("Personeels_id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Emailadres");
+                    b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("ConcurrencyStamp");
+
+                    b.Property<string>("Email");
+
+                    b.Property<bool>("EmailConfirmed");
 
                     b.Property<byte[]>("Foto")
                         .HasColumnType("image");
 
-                    b.Property<string>("GsmNummer")
-                        .HasColumnName("Gsm Nummer");
+                    b.Property<int>("Id");
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
 
                     b.Property<string>("Naam")
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnName("Gsm Nummer");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecurityStamp");
+
                     b.Property<string>("SoortPersoneelslid")
                         .HasColumnName("Soort Personeelslid")
                         .HasMaxLength(50);
+
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName");
 
                     b.Property<string>("Voornaam")
                         .HasMaxLength(50)
