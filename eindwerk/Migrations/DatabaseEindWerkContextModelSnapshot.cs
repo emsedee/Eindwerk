@@ -367,10 +367,6 @@ namespace eindwerk.Migrations
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
-                    b.Property<DateTime?>("Duur")
-                        .HasColumnName("duur")
-                        .HasColumnType("datetime");
-
                     b.Property<DateTime?>("Einddatum")
                         .HasColumnType("datetime");
 

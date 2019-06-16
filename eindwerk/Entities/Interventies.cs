@@ -17,9 +17,7 @@ namespace eindwerk.Entities
         public string Complexiteit { get; set; }
         public DateTime? Meldingsdatum { get; set; }
         public string Omschrijving { get; set; }
-        public DateTime? Einddatum { get; set; }
-        public DateTime? Duur { get; set; }
-        public DateTime? Verwachtteoplossingstermijn { get; set; }
+        public DateTime? Einddatum { get; set; } public DateTime? Verwachtteoplossingstermijn { get; set; }
         public string OmschrijvingOplossing { get; set; }
         public int? PersoneelsId { get; set; }
         public int? PrioriteitId { get; set; }

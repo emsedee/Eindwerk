@@ -233,9 +233,7 @@ namespace eindwerk.Entities
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Duur)
-                    .HasColumnName("duur")
-                    .HasColumnType("datetime");
+                
 
                 entity.Property(e => e.Einddatum).HasColumnType("datetime");
 

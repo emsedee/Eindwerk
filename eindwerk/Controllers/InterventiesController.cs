@@ -55,6 +55,7 @@ namespace eindwerk.Controllers
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName");
             ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit");
             ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "Naam");
+            ViewData["LocatieId"] = new SelectList(_context.Locatie, "LocatieId", "Naam");
 
             return View();
         }
@@ -116,7 +117,12 @@ namespace eindwerk.Controllers
                 try
                 {
                     _context.Update(interventies);
-                  
+                    if (interventies.Status == Status.Opgelost)
+                    {
+                        interventies.Einddatum = DateTime.Now;
+                      
+                         
+                    }
                     if (interventies.PersoneelsId !=1 && interventies.Status != Status.Opgelost )
                     {
                        
