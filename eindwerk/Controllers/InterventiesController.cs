@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using eindwerk.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using eindwerk.Entities;
-using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace eindwerk.Controllers
 {
@@ -18,12 +17,30 @@ namespace eindwerk.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "Manager, Admin, Technieker")]
         // GET: Interventies
         public async Task<IActionResult> Index()
         {
-            var databaseEindWerkContext = _context.Interventies.Include(i => i.Bestel).Include(i => i.Personeels).Include(i => i.Prioriteit).Include(i => i.Toestel).Include(i => i.Toestel.Locatie);
+
+          var databaseEindWerkContext = _context.Interventies.Include(i => i.Bestel).Include(i => i.Personeels).Include(i => i.Prioriteit).Include(i => i.Toestel).Include(i => i.Toestel.Locatie);
+
             return View(await databaseEindWerkContext.ToListAsync());
+        }
+        public ActionResult Eigenlijst()
+        {
+            if (User.IsInRole("Technieker"))
+            {
+
+                IQueryable<Interventies> EigenLijst = _context.Interventies.Where(b => b.Personeels.Emailadres == User.Identity.Name).Include(i => i.Bestel).Include(i => i.Personeels).Include(i => i.Prioriteit).Include(i => i.Toestel).Include(i => i.Toestel.Locatie);
+        
+                return View(EigenLijst);
+            }
+            else
+            {
+
+              var databaseEindWerkContext = _context.Interventies.Include(i => i.Bestel).Include(i => i.Personeels).Include(i => i.Prioriteit).Include(i => i.Toestel).Include(i => i.Toestel.Locatie);
+                return View(databaseEindWerkContext.ToListAsync());
+            }
         }
 
         // GET: Interventies/Details/5
@@ -34,11 +51,12 @@ namespace eindwerk.Controllers
                 return NotFound();
             }
 
-            var interventies = await _context.Interventies
+            Interventies interventies = await _context.Interventies
                 .Include(i => i.Bestel)
                 .Include(i => i.Personeels)
                 .Include(i => i.Prioriteit)
                 .Include(i => i.Toestel)
+                .Include(i => i.Toestel.Locatie)
                 .FirstOrDefaultAsync(m => m.InterventieId == id);
             if (interventies == null)
             {
@@ -71,7 +89,7 @@ namespace eindwerk.Controllers
             if (ModelState.IsValid)
             {
                 interventies.PersoneelsId = 1;
-                interventies.Status = 0  ;
+                interventies.Status = 0;
                 interventies.Meldingsdatum = DateTime.Now;
                 _context.Add(interventies);
                 await _context.SaveChangesAsync();
@@ -93,8 +111,8 @@ namespace eindwerk.Controllers
                 return NotFound();
             }
 
-            var interventies = await _context.Interventies.FindAsync(id);
-          
+            Interventies interventies = await _context.Interventies.FindAsync(id);
+
             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden.Where(b => b.SoortPersoneelslid.Contains("Technieker")), "PersoneelsId", "FullName", interventies.PersoneelsId);
             ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
@@ -119,7 +137,8 @@ namespace eindwerk.Controllers
                 try
                 {
                     _context.Update(interventies);
-                    if (interventies.Status == Status.Opgelost )
+                    if (interventies.Status == Status.Opgelost)
+                    {
                         if (interventies.OmschrijvingOplossing != null)
                         {
                             interventies.Einddatum = DateTime.Now;
@@ -127,24 +146,24 @@ namespace eindwerk.Controllers
                         }
                         else
                         {
-                         
+
                             ModelState.AddModelError("OmschrijvingOplossing", "Gelieve een oplossing in te vullen");
                             ViewData["BestelId"] = new SelectList(_context.Bestellingen, "BestelId", "BestelId", interventies.BestelId);
                             ViewData["PersoneelsId"] = new SelectList(_context.Personeelsleden, "PersoneelsId", "FullName", interventies.PersoneelsId);
                             ViewData["PrioriteitId"] = new SelectList(_context.Prioriteit, "PrioriteitId", "_Prioriteit", interventies.PrioriteitId);
                             ViewData["ToestelId"] = new SelectList(_context.Toestel, "ToestelId", "Naam", interventies.ToestelId);
                             return View(interventies);
-                          
-                           
-                        }
 
-                      
-                    if (interventies.PersoneelsId !=1 && interventies.Status != Status.Opgelost )
+
+                        }
+                    }
+
+                    if (interventies.PersoneelsId != 1 && interventies.Status != Status.Opgelost)
                     {
-                       
-                            interventies.Status = Status.Toegewezen;
-                        
-                        
+
+                        interventies.Status = Status.Toegewezen;
+
+
                     }
 
                     if (interventies.PersoneelsId == 1 && interventies.Status == Status.Toegewezen)
@@ -189,7 +208,7 @@ namespace eindwerk.Controllers
                 return NotFound();
             }
 
-            var interventies = await _context.Interventies
+            Interventies interventies = await _context.Interventies
                 .Include(i => i.Bestel)
                 .Include(i => i.Personeels)
                 .Include(i => i.Prioriteit)
@@ -208,7 +227,7 @@ namespace eindwerk.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var interventies = await _context.Interventies.FindAsync(id);
+            Interventies interventies = await _context.Interventies.FindAsync(id);
             _context.Interventies.Remove(interventies);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

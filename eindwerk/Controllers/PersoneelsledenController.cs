@@ -15,10 +15,6 @@ namespace eindwerk.Controllers
     {
         private readonly DatabaseEindWerkContext
             
-            
-            
-            
-            
             _context;
 
         public PersoneelsledenController(DatabaseEindWerkContext context)
