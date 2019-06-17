@@ -23,8 +23,13 @@ using eindwerk.Models;
 
 #line default
 #line hidden
+#line 3 "E:\Eindwerk\Eindwerk\Eindwerk\eindwerk\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a13b3068940f84f8e6cae27a11bcf645bbded971", @"/Views/Personeelsleden/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3871df00a48f214334ed5c7506f687e1dea1fc11", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7b0b6622c4097f5c03432eed49ff525bd06bcc39", @"/Views/_ViewImports.cshtml")]
     public class Views_Personeelsleden_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<eindwerk.Entities.Personeelsleden>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Edit", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -185,7 +190,11 @@ using eindwerk.Models;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(1533, 64, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a13b3068940f84f8e6cae27a11bcf645bbded9719328", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a13b3068940f84f8e6cae27a11bcf645bbded9719478", async() => {
+>>>>>>> dev4
                 BeginContext(1589, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -220,7 +229,11 @@ using eindwerk.Models;
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(1605, 38, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a13b3068940f84f8e6cae27a11bcf645bbded97111655", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a13b3068940f84f8e6cae27a11bcf645bbded97111805", async() => {
+>>>>>>> dev4
                 BeginContext(1627, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();
@@ -243,6 +256,8 @@ using eindwerk.Models;
             EndContext();
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
+        public IAuthorizationService AuthorizationService { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]

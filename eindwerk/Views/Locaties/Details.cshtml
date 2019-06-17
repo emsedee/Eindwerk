@@ -1,0 +1,43 @@
+﻿@model eindwerk.Entities.Locatie
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Locatie</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VoorraadPlaatsen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VoorraadPlaatsen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Oppervlakte)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Oppervlakte)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SoortRuimte)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SoortRuimte)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.LocatieId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

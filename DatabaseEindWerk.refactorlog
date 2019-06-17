@@ -161,4 +161,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Factuur_id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="bd8b3689-a0e9-4fbd-a209-687352d97d5a" ChangeDateTime="06/15/2019 21:03:21">
+    <Property Name="ElementName" Value="[dbo].[Prioriteit].[Gewoon]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Prioriteit]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="_prioriteit" />
+  </Operation>
 </Operations>

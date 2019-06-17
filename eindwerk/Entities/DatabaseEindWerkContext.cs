@@ -1,10 +1,12 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace eindwerk.Entities
 {
-    public class DatabaseEindWerkContext : DbContext
+    public class DatabaseEindWerkContext : IdentityDbContext<IdentityUser>
     {
         public DatabaseEindWerkContext()
         {
@@ -41,12 +43,14 @@ namespace eindwerk.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-0FFQO7L\\SQLEXPRESS;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;Initial Catalog=DatabaseEindWerk");
+                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-0FFQO7L\SQLEXPRESS;Initial Catalog=DatabaseEindWerk;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
             modelBuilder.Entity<BesteldeOnderdelen>(entity =>
@@ -229,9 +233,7 @@ namespace eindwerk.Entities
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Duur)
-                    .HasColumnName("duur")
-                    .HasColumnType("datetime");
+                
 
                 entity.Property(e => e.Einddatum).HasColumnType("datetime");
 
@@ -247,7 +249,7 @@ namespace eindwerk.Entities
 
                 entity.Property(e => e.PrioriteitId).HasColumnName("Prioriteit_id");
 
-                entity.Property(e => e.SoortInterventie)
+                entity.Property(e => e.Status)
                     .HasColumnName("Soort interventie")
                     .HasMaxLength(50);
 
@@ -429,17 +431,8 @@ namespace eindwerk.Entities
             {
                 entity.Property(e => e.PrioriteitId).HasColumnName("Prioriteit_id");
 
-                entity.Property(e => e.Dringend).HasMaxLength(10);
+                entity.Property(e => e._Prioriteit).HasMaxLength(10);
 
-                entity.Property(e => e.Gewoon).HasMaxLength(10);
-
-                entity.Property(e => e.HoogDringend)
-                    .HasColumnName("Hoog Dringend")
-                    .HasMaxLength(10);
-
-                entity.Property(e => e.ZeerDringen)
-                    .HasColumnName("Zeer Dringen")
-                    .HasMaxLength(10);
             });
 
             modelBuilder.Entity<Tablet>(entity =>

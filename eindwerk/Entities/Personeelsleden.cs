@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace eindwerk.Entities
 {
@@ -20,6 +21,15 @@ namespace eindwerk.Entities
         public string Emailadres { get; set; }
         public byte[] Foto { get; set; }
         public string SoortPersoneelslid { get; set; }
+        [Display(Name = "Full Name")]
+        public string FullName
+        {
+            get
+            {
+                return Naam + " " + Voornaam;
+            }
+        }
+
 
         public virtual ICollection<Bestellingen> Bestellingen { get; set; }
         public virtual ICollection<InterventieCompetenties> InterventieCompetenties { get; set; }

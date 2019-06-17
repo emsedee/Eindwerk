@@ -6,12 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using eindwerk.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eindwerk.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PersoneelsledenController : Controller
     {
-        private readonly DatabaseEindWerkContext _context;
+        private readonly DatabaseEindWerkContext
+            
+            _context;
 
         public PersoneelsledenController(DatabaseEindWerkContext context)
         {
@@ -23,7 +27,12 @@ namespace eindwerk.Controllers
         {
             return View(await _context.Personeelsleden.ToListAsync());
         }
+        public ActionResult Techniekers()
+        {
+            var TechniekersLijst = _context.Personeelsleden.Where(b => b.SoortPersoneelslid.Contains("Technieker"));
 
+            return View(TechniekersLijst);
+        }
         // GET: Personeelsleden/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace eindwerk.Entities
 {
-    public partial class Interventies
+    public class Interventies
     {
+
         public Interventies()
         {
             Bestellingen = new HashSet<Bestellingen>();
@@ -16,15 +17,14 @@ namespace eindwerk.Entities
         public string Complexiteit { get; set; }
         public DateTime? Meldingsdatum { get; set; }
         public string Omschrijving { get; set; }
-        public DateTime? Einddatum { get; set; }
-        public DateTime? Duur { get; set; }
-        public DateTime? Verwachtteoplossingstermijn { get; set; }
+        public DateTime? Einddatum { get; set; } public DateTime? Verwachtteoplossingstermijn { get; set; }
         public string OmschrijvingOplossing { get; set; }
         public int? PersoneelsId { get; set; }
         public int? PrioriteitId { get; set; }
         public int? ToestelId { get; set; }
         public int? BestelId { get; set; }
-        public string SoortInterventie { get; set; }
+        public Status Status { get; set; }
+       
 
         public virtual Bestellingen Bestel { get; set; }
         public virtual Personeelsleden Personeels { get; set; }
@@ -34,4 +34,6 @@ namespace eindwerk.Entities
         public virtual ICollection<Fotos> Fotos { get; set; }
         public virtual ICollection<InterventieCompetenties> InterventieCompetenties { get; set; }
     }
+    public enum Status
+    { Open, Toegewezen, Opgelost }
 }
