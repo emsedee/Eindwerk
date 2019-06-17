@@ -1,0 +1,51 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Bestelde onderdelen] (Table)
+       [dbo].[Bestellingen] (Table)
+       [dbo].[Betrokkenheid] (Table)
+       [dbo].[Competentie] (Table)
+       [dbo].[Facturen] (Table)
+       [dbo].[Fotos] (Table)
+       [dbo].[Interventie competenties] (Table)
+       [dbo].[Interventies] (Table)
+       [dbo].[Kennisgebieden] (Table)
+       [dbo].[Leverancier] (Table)
+       [dbo].[Locatie] (Table)
+       [dbo].[Niveau] (Table)
+       [dbo].[Onderdelen] (Table)
+       [dbo].[Onderdelencode] (Table)
+       [dbo].[Personeelsleden] (Table)
+       [dbo].[Prioriteit] (Table)
+       [dbo].[Tablet] (Table)
+       [dbo].[TabletPersoneelsLeden] (Table)
+       [dbo].[Toestel] (Table)
+       [dbo].[Voorraad] (Table)
+       [dbo].[FK_Bestellingen_Leverancier] (Foreign Key)
+       [dbo].[FK_Bestellingen_Personeelsleden] (Foreign Key)
+       [dbo].[FK_Bestellingen_Facturen] (Foreign Key)
+       [dbo].[FK_Bestellingen_Interventies] (Foreign Key)
+       [dbo].[FK_Competentie_Niveau] (Foreign Key)
+       [dbo].[FK_Fotos_Interventies] (Foreign Key)
+       [dbo].[FK_Interventie competenties_Interventies] (Foreign Key)
+       [dbo].[FK_Interventie competenties_Personeelsleden] (Foreign Key)
+       [dbo].[FK_Interventie competenties_Kennisgebieden] (Foreign Key)
+       [dbo].[FK_Interventies_Personeelsleden] (Foreign Key)
+       [dbo].[FK_Interventies_Prioriteit] (Foreign Key)
+       [dbo].[FK_Interventies_Toestel] (Foreign Key)
+       [dbo].[FK_Interventies_Bestellingen] (Foreign Key)
+       [dbo].[FK_Onderdelen_Toestel] (Foreign Key)
+       [dbo].[FK_TabletPersoneelsLeden_Tablet] (Foreign Key)
+       [dbo].[FK_TabletPersoneelsLeden_Personeelsleden] (Foreign Key)
+       [dbo].[FK_Toestel_Locatie] (Foreign Key)
+
+** Supporting actions
