@@ -26,7 +26,8 @@ namespace eindwerk.Controllers
 
             return View(await databaseEindWerkContext.ToListAsync());
         }
-        public ActionResult Eigenlijst()
+        [Authorize(Roles = "Manager, Admin, Technieker")]
+        public async Task<IActionResult> Eigenlijst()
         {
             if (User.IsInRole("Technieker"))
             {
@@ -38,8 +39,10 @@ namespace eindwerk.Controllers
             else
             {
 
-              var databaseEindWerkContext = _context.Interventies.Include(i => i.Bestel).Include(i => i.Personeels).Include(i => i.Prioriteit).Include(i => i.Toestel).Include(i => i.Toestel.Locatie);
-                return View(databaseEindWerkContext.ToListAsync());
+
+                var databaseEindWerkContext = _context.Interventies.Include(i => i.Bestel).Include(i => i.Personeels).Include(i => i.Prioriteit).Include(i => i.Toestel).Include(i => i.Toestel.Locatie);
+
+                return View(await databaseEindWerkContext.ToListAsync());
             }
         }
 

@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using eindwerk.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eindwerk.Controllers
 {
+    [Authorize(Roles = "Manager, Admin")]
     public class LocatiesController : Controller
     {
         private readonly DatabaseEindWerkContext _context;
@@ -17,7 +19,7 @@ namespace eindwerk.Controllers
         {
             _context = context;
         }
-
+        
         // GET: Locaties
         public async Task<IActionResult> Index()
         {

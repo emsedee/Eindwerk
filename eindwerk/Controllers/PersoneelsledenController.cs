@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace eindwerk.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Manager, Admin")]
     public class PersoneelsledenController : Controller
     {
         private readonly DatabaseEindWerkContext

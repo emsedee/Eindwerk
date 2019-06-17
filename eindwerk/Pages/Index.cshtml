@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    Layout = "~/Views/Shared/_Layout2.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <head>
@@ -27,38 +27,9 @@
 </head>
 
 
-<body class="login-img3-body">
-
-    <div class="container">
-
-        <form class="login-form" action="index.html">
-            <div class="login-wrap">
-                <p class="login-img"><i class="icon_lock_alt"></i></p>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="icon_profile"></i></span>
-                    <input type="text" class="form-control" placeholder="Username" autofocus>
-                </div>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                    <input type="password" class="form-control" placeholder="Password">
-                </div>
-                <label class="checkbox">
-                    <input type="checkbox" value="remember-me"> Remember me
-                    <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
-                </label>
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                   <a type="submit" class="btn btn-primary btn-lg btn-block" >Login</a>
-                </form>
-
-                
-                <a class="btn btn-info btn-lg btn-block" href="identity/account/register" type="submit">Signup</a>
-
-
-            </div>
-        </form>
-       
-    </div>
-
+<body class="">
+    <h1>@ViewData["Title"]</h1>
+    <p>Welcome @User.Identity.Name!</p>
 
 </body>
 
